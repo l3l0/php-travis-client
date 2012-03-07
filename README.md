@@ -5,7 +5,7 @@ It is simple PHP implementation for [travisci api](http://about.travis-ci.org/do
 ## Installation
 
 Download repository then [download composer](http://getcomposer.org/doc/01-basic-usage)
-using `http://getcomposer.org/doc/01-basic-usage`
+using `wget -nc http://getcomposer.org/composer.phar`
 
 So install command will look like `php composer.phar install`
 
