@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "keywords": ["CI", "travis", "test"],
-    "homepage": "http://github.com/l3l0/php-travis-client"
+    "homepage": "http://github.com/l3l0/php-travis-client",
     "authors": [
         {
             "name": "Leszek Prabucki",
