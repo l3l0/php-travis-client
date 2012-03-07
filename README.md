@@ -1,6 +1,8 @@
 # PHP Travis Client
 
-It is simple PHP implementation for [travisci api](http://about.travis-ci.org/docs/dev/api/).
+It is simple PHP implementation of client using [travisci api](http://about.travis-ci.org/docs/dev/api/).
+
+[![Build Status](https://secure.travis-ci.org/l3l0/php-travis-client.png?branch=master)](http://travis-ci.org/l3l0/php-travis-client)
 
 ## Installation
 
@@ -11,7 +13,7 @@ So install command will look like `php composer.phar install`
 
 ## Usage
 
-Just looks at tests :P . Basic example:
+Just look at tests :P . Basic example:
 
 ```php
 <?php
