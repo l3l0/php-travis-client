@@ -1,0 +1,16 @@
+{
+    "hash": "8a3b4a0c5931e933a57f02d385c1c321",
+    "packages": [
+        {
+            "package": "doctrine/common",
+            "version": "dev-master",
+            "source-reference": "f157be8c4f1ba713730cf66066eaac2bdfa1c1cc"
+        },
+        {
+            "package": "kriswallsmith/buzz",
+            "version": "dev-master",
+            "source-reference": "ca5ceed317e8da52c1f905e9477d529d6e1d08b7"
+        }
+    ],
+    "aliases": []
+}
