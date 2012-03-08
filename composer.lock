@@ -1,15 +1,14 @@
 {
-    "hash": "8a3b4a0c5931e933a57f02d385c1c321",
+    "hash": "dacc5b4245a10c93c9fbbbae66b4d454",
     "packages": [
         {
             "package": "doctrine/common",
-            "version": "dev-master",
-            "source-reference": "f157be8c4f1ba713730cf66066eaac2bdfa1c1cc"
+            "version": "2.2-dev",
+            "source-reference": "4a1d5e6cb25e5604814c0854e0cc928dea88bcc6"
         },
         {
             "package": "kriswallsmith/buzz",
-            "version": "dev-master",
-            "source-reference": "ca5ceed317e8da52c1f905e9477d529d6e1d08b7"
+            "version": "v0.5"
         }
     ],
     "aliases": []

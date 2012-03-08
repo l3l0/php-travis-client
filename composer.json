@@ -14,8 +14,8 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "kriswallsmith/buzz": "dev-master",
-        "doctrine/common": ">=2.2"
+        "kriswallsmith/buzz": "0.5",
+        "doctrine/common": "2.2-dev"
     },
     "autoload": {
         "psr-0": { "Travis": "src/" }
