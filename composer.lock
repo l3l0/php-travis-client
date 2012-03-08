@@ -1,10 +1,9 @@
 {
-    "hash": "dacc5b4245a10c93c9fbbbae66b4d454",
+    "hash": "f9e43fe70e40b249a08250b0aba59bb7",
     "packages": [
         {
             "package": "doctrine/common",
-            "version": "2.2-dev",
-            "source-reference": "4a1d5e6cb25e5604814c0854e0cc928dea88bcc6"
+            "version": "2.2.1"
         },
         {
             "package": "kriswallsmith/buzz",
