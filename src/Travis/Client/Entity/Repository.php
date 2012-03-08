@@ -75,6 +75,9 @@ class Repository
      */
     protected $publicKey;
 
+    /**
+     * @param array
+     */
     public function fromArray($repositoryData)
     {
         BuildUtil::fillFromArray($this, $repositoryData);
@@ -189,7 +192,7 @@ class Repository
      */
     public function setLastBuildStartedAt($date)
     {
-        $this->lastBuildStartedAt = \date_create($date);
+        $this->lastBuildStartedAt = date_create($date);
     }
 
     /**
@@ -253,7 +256,7 @@ class Repository
      */
     public function setLastBuildFinishedAt($date)
     {
-        $this->lastBuildFinishedAt = \date_create($date);
+        $this->lastBuildFinishedAt = date_create($date);
     }
 
     /**
@@ -269,8 +272,7 @@ class Repository
      */
     public function setBuilds($builds)
     {
-        if ($builds instanceof BuildCollection)
-        {
+        if ($builds instanceof BuildCollection) {
             $this->builds = $builds;
 
             return;

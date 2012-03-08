@@ -17,6 +17,9 @@ use InvalidArgumentException;
 
 abstract class Collection extends ArrayCollection
 {
+    /**
+     * @param array $objects
+     */
     public function __construct($objects = array())
     {
         $this->fromArray($objects);
@@ -51,10 +54,19 @@ abstract class Collection extends ArrayCollection
         parent::set($key, $this->convertArrayToObject($objectData));
     }
 
-    public function findOneBy(array $criteria) {
+    /**
+     * @param array $criteria
+     * @return mixed
+     */
+    public function findOneBy(array $criteria)
+    {
         return $this->findBy($criteria)->first();
     }
 
+    /**
+     * @param array $criteria
+     * @return Travis\Client\Entity\Collection
+     */
     public function findBy(array $criteria)
     {
         return $this->filter(function ($object) use ($criteria) {

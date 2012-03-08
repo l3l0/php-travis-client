@@ -135,7 +135,7 @@ class Build
      */
     public function setCommittedAt($date)
     {
-        $this->committedAt = \date_create($date);
+        $this->committedAt = date_create($date);
     }
 
     /**
@@ -151,7 +151,7 @@ class Build
      */
     public function setStartedAt($date)
     {
-        $this->startedAt = \date_create($date);
+        $this->startedAt = date_create($date);
     }
 
     /**
@@ -167,7 +167,7 @@ class Build
      */
     public function setFinishedAt($date)
     {
-        $this->finishedAt = \date_create($date);
+        $this->finishedAt = date_create($date);
     }
 
     /**
