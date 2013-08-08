@@ -16,6 +16,8 @@ use Travis\Client\Entity\BuildCollection,
 
 class Client
 {
+    protected $apiUrl = 'https://api.travis-ci.org';
+
     /**
      * @var Buzz\Browser
      */
@@ -28,8 +30,8 @@ class Client
 
     public function fetchRepository($slug)
     {
-        $repositoryUrl = sprintf('http://travis-ci.org/%s.json', $slug);
-        $buildsUrl = sprintf('http://travis-ci.org/%s/builds.json', $slug);
+        $repositoryUrl = sprintf('%s/%s.json', $this->apiUrl, $slug);
+        $buildsUrl = sprintf('%s/%s/builds.json', $this->apiUrl, $slug);
 
         $repository = new Repository();
         $repositoryArray = json_decode($this->browser->get($repositoryUrl)->getContent(), true);
