@@ -23,11 +23,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $browser = $this->getBrowser();
         $browser->expects($this->at(0))
             ->method('get')
-            ->with($this->equalTo('http://travis-ci.org/l3l0/OpenSocialBundle.json'))
+            ->with($this->equalTo('https://api.travis-ci.org/l3l0/OpenSocialBundle.json'))
             ->will($this->returnValue($this->getResponse($this->getRepositoryJson())));
         $browser->expects($this->at(1))
             ->method('get')
-            ->with($this->equalTo('http://travis-ci.org/l3l0/OpenSocialBundle/builds.json'))
+            ->with($this->equalTo('https://api.travis-ci.org/l3l0/OpenSocialBundle/builds.json'))
             ->will($this->returnValue($this->getResponse($this->getBuildsJson())));
 
         $client = new Client();
@@ -50,7 +50,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $browser = $this->getBrowser();
         $browser->expects($this->at(0))
             ->method('get')
-            ->with($this->equalTo('http://travis-ci.org/l3l0/OpenSocialBundle.json'))
+            ->with($this->equalTo('https://api.travis-ci.org/l3l0/OpenSocialBundle.json'))
             ->will($this->returnValue($this->getResponse('')));
 
         $client = new Client();
