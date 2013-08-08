@@ -15,6 +15,10 @@ use Travis\Client\Util\BuildUtil;
 
 class Build
 {
+    const RESULT_OK = 0;
+
+    const RESULT_FAILED = 1;
+
     /**
      * @var int
      */
@@ -79,6 +83,10 @@ class Build
      * @var string
      */
     protected $message;
+
+    protected $commit;
+
+    protected $result;
 
     /**
      * @var string
@@ -328,5 +336,15 @@ class Build
     public function setDuration($duration)
     {
         $this->duration = $duration;
+    }
+
+    public function setResult($result)
+    {
+        $this->result = $result;
+    }
+
+    public function getResult()
+    {
+        return $this->result;
     }
 }
