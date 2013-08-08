@@ -19,13 +19,21 @@ class Client
     protected $apiUrl = 'https://api.travis-ci.org';
 
     /**
-     * @var Buzz\Browser
+     * @var \Buzz\Browser
      */
     private $browser;
 
-    public function __construct()
+    /**
+     * @param \Buzz\Browser $browser
+     *
+     * @return self
+     */
+    public function __construct(\Buzz\Browser $browser = null)
     {
-        $this->setBrowser(new \Buzz\Browser());
+        if (null === $browser) {
+            $browser = new \Buzz\Browser();
+        }
+        $this->setBrowser($browser);
     }
 
     public function fetchRepository($slug)
@@ -49,5 +57,6 @@ class Client
     public function setBrowser($browser)
     {
         $this->browser = $browser;
+        return $this;
     }
 }
