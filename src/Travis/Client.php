@@ -11,11 +11,16 @@
 
 namespace Travis;
 
-use Travis\Client\Entity\BuildCollection,
-    Travis\Client\Entity\Repository;
+use Travis\Client\Entity\BuildCollection;
+use Travis\Client\Entity\Repository;
+
+use Buzz\Browser;
 
 class Client
 {
+    /**
+     * @var string
+     */
     protected $apiUrl = 'https://api.travis-ci.org';
 
     /**
@@ -28,10 +33,10 @@ class Client
      *
      * @return self
      */
-    public function __construct(\Buzz\Browser $browser = null)
+    public function __construct(Browser $browser = null)
     {
         if (null === $browser) {
-            $browser = new \Buzz\Browser();
+            $browser = new Browser();
         }
         $this->setBrowser($browser);
     }
@@ -54,7 +59,12 @@ class Client
         return $repository;
     }
 
-    public function setBrowser($browser)
+    /**
+     * @param \Buzz\Browser
+     *
+     * @return self
+     */
+    public function setBrowser(Browser $browser)
     {
         $this->browser = $browser;
         return $this;
