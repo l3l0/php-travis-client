@@ -11,25 +11,40 @@
 
 namespace Travis;
 
-use Travis\Client\Entity\BuildCollection,
-    Travis\Client\Entity\Repository;
+use Travis\Client\Entity\BuildCollection;
+use Travis\Client\Entity\Repository;
+
+use Buzz\Browser;
 
 class Client
 {
     /**
-     * @var Buzz\Browser
+     * @var string
+     */
+    protected $apiUrl = 'https://api.travis-ci.org';
+
+    /**
+     * @var \Buzz\Browser
      */
     private $browser;
 
-    public function __construct()
+    /**
+     * @param \Buzz\Browser $browser
+     *
+     * @return self
+     */
+    public function __construct(Browser $browser = null)
     {
-        $this->setBrowser(new \Buzz\Browser());
+        if (null === $browser) {
+            $browser = new Browser();
+        }
+        $this->setBrowser($browser);
     }
 
     public function fetchRepository($slug)
     {
-        $repositoryUrl = sprintf('http://travis-ci.org/%s.json', $slug);
-        $buildsUrl = sprintf('http://travis-ci.org/%s/builds.json', $slug);
+        $repositoryUrl = sprintf('%s/%s.json', $this->apiUrl, $slug);
+        $buildsUrl = sprintf('%s/%s/builds.json', $this->apiUrl, $slug);
 
         $repository = new Repository();
         $repositoryArray = json_decode($this->browser->get($repositoryUrl)->getContent(), true);
@@ -44,8 +59,14 @@ class Client
         return $repository;
     }
 
-    public function setBrowser($browser)
+    /**
+     * @param \Buzz\Browser
+     *
+     * @return self
+     */
+    public function setBrowser(Browser $browser)
     {
         $this->browser = $browser;
+        return $this;
     }
 }
