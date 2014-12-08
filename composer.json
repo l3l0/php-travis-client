@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "kriswallsmith/buzz": "~0.5",
+        "kriswallsmith/buzz": "~0.13",
         "doctrine/common": "~2.2"
     },
     "autoload": {
