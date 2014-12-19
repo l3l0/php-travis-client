@@ -59,6 +59,20 @@ class Client
         return $repository;
     }
 
+    public function restartBuild($build, $token) {
+        $restartUrl = sprintf('%s/builds/%s/restart.json', $this->apiUrl, $build->getId());
+        $headers = array(
+            'Authorization' => 'token ' . $token
+        );
+
+        $restartArray = json_decode($this->browser->post($restartUrl, $headers, $content)->getContent(), true);
+        if (!$restartArray) {
+            throw new \UnexpectedValueException(sprintf('Response is empty for url %s', $restartUrl));
+        }
+
+        return $restartArray;
+    }
+
     /**
      * @param \Buzz\Browser
      *
