@@ -13,7 +13,7 @@ namespace Travis;
 
 use Travis\Client\Entity\BuildCollection;
 use Travis\Client\Entity\Repository;
-
+use Travis\Client\Listener\TokenAuthListener;
 use Buzz\Browser;
 
 class Client
@@ -21,7 +21,7 @@ class Client
     /**
      * @var string
      */
-    protected $apiUrl = 'https://api.travis-ci.org';
+    private $apiUrl = 'https://api.travis-ci.org';
 
     /**
      * @var \Buzz\Browser
@@ -41,11 +41,13 @@ class Client
         $this->setBrowser($browser);
     }
 
-    public function fetchRepository($slug)
+    public function fetchRepository($slug, $token = FALSE)
     {
         $repositoryUrl = sprintf('%s/%s.json', $this->apiUrl, $slug);
         $buildsUrl = sprintf('%s/%s/builds.json', $this->apiUrl, $slug);
-
+        if ($token) {
+            $this->browser->addListener(new TokenAuthListener($token));
+        }
         $repository = new Repository();
         $repositoryArray = json_decode($this->browser->get($repositoryUrl)->getContent(), true);
         if (!$repositoryArray) {
@@ -59,15 +61,15 @@ class Client
         return $repository;
     }
 
-    public function restartBuild($build, $token) {
-        $restartUrl = sprintf('%s/builds/%s/restart.json', $this->apiUrl, $build->getId());
-        $headers = array(
-            'Authorization' => 'token ' . $token
-        );
+    public function restartBuild($build, $token = FALSE) {
+        $url = sprintf('%s/builds/%s/restart.json', $this->apiUrl, $build->getId());
+        if ($token) {
+            $this->browser->addListener(new TokenAuthListener($token));
+        }
 
-        $restartArray = json_decode($this->browser->post($restartUrl, $headers, $content)->getContent(), true);
+        $restartArray = json_decode($this->browser->post($url)->getContent(), true);
         if (!$restartArray) {
-            throw new \UnexpectedValueException(sprintf('Response is empty for url %s', $restartUrl));
+            throw new \UnexpectedValueException(sprintf('Response is empty for url %s', $url));
         }
 
         return $restartArray;
@@ -82,5 +84,10 @@ class Client
     {
         $this->browser = $browser;
         return $this;
+    }
+
+    public function setApiUrl($url)
+    {
+        $this->apiUrl = $url;
     }
 }
