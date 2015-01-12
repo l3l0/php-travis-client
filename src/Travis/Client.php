@@ -67,8 +67,6 @@ class Client
 
     public function restartBuild($build) {
         $url = sprintf('%s/builds/%s/restart.json', $this->apiUrl, $build->getId());
-        $url = 'http://requestb.in/zvy7y9zv';
-
         $restartArray = json_decode($this->browser->post($url)->getContent(), true);
         if (!$restartArray) {
             throw new \UnexpectedValueException(sprintf('Response is empty for url %s', $url));
