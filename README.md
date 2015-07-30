@@ -18,7 +18,7 @@ Just look at tests :P . Basic example:
 ```php
 <?php
 
-require_once 'vendor/.composer/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 $client = new Travis\Client();
 
