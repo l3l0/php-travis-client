@@ -37,7 +37,7 @@ class Build
     /**
      * @var \DataTime
      */
-    protected $commitedAt;
+    protected $committedAt;
 
     /**
      * @var \DateTime
